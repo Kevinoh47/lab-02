@@ -1,35 +1,26 @@
 {
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "jest": true,
+    "es6": true
+  },
   "globals": {
-    "rawData": true,
-    "app": true,
-    "Handlebars": true,
-    "page": true,
-    "$": true,
-    "marked": true,
-    "hljs": true
+    "err": true,
+    "req": true,
+    "res": true,
+    "next": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 6,
-    "ecmaFeatures": {"impliedStrict": true}
-  },
-  "env": {
-    "browser": true,
-    "jquery": true,
-    "node": true,
-    "es6": true
+    "sourceType": "module"
   },
   "rules": {
     "no-console": "off",
-    "no-undefined": "off",
-    "new-cap": "warn",
-    "no-trailing-spaces": "warn",
-    "quotes": ["warn", "single", {"allowTemplateLiterals": true}],
-    "no-multi-spaces": ["warn", {"exceptions": {"VariableDeclarator": true}}],
-    "no-template-curly-in-string": "error",
-    "eqeqeq": ["error", "always"],
-    "semi": ["error", "always"],
-    "indent": ["error", 2],
-    "no-redeclare": ["error", {"builtinGlobals": true}]
+    "indent": [ "error", 2 ],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": [ "error", "always" ]
   }
 }
