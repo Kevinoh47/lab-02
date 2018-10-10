@@ -38,7 +38,6 @@ List.prototype.shift = function() {
 /**
  * Add item to the beginning of the list and increment list length property
  * @param item
- * @returns list object
  */
 List.prototype.unshift = function(item) {
   let newList = {};
@@ -46,11 +45,22 @@ List.prototype.unshift = function(item) {
   
   for (var key in this.data) {
     let newKey = parseInt(key) + 1;
-    newList[newKey] = this.data[key];
+    if (isInt(newKey)) {
+      newList[newKey] = this.data[key];
+    }
   }
   this.length++;
-  //return returnValue;
   this.data = newList;
 };
+
+
+/**
+ * credit: https://stackoverflow.com/questions/14636536/how-to-check-if-a-variable-is-an-integer-in-javascript#14794066
+ * @param  value
+ * @return bool
+ */
+function isInt(value) {
+  return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value));
+}
 
 module.exports = List;
