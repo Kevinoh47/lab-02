@@ -12,13 +12,13 @@ class List {
    * @param item
    */
   push(item) {
-    // Add an item to the end
+    // Add an item to the end //NOTE KO SEE PHOTO OF BOARD FOR CHANGES
     this.data[this.length] = item;
     this.length++;
   }
 
   /**
-   * // Remove an item from the end of the list and return it's value
+   * // Remove an item from the end of the list and return its value
    * @returns {*}
    */
   pop() {

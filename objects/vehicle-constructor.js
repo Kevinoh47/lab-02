@@ -19,6 +19,7 @@ const Car = function(name) {
   Vehicle.call(this, name, 4);
 };
 
+// run car constructor function:
 Car.prototype = new Vehicle();
 
 // Motorcycle constructor
@@ -26,10 +27,12 @@ const Motorcycle = function(name) {
   Vehicle.call(this,name,2);
 };
 
+// run car constructor function:
 Motorcycle.prototype = new Vehicle();
 
 Motorcycle.prototype.wheelie = () => {
   return 'Wheee!';
 };
 
+// export 
 module.exports = {Car, Motorcycle};
