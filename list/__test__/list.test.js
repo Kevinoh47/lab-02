@@ -62,6 +62,57 @@ describe('List Data Structure', () => {
 
   });
 
+  it ('can slice out and return a subset list', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.slice(0, 3);
+
+    expect(results.data).toEqual({ '0': 'a', '1': 'b', '2': 'c'} );
+  });
+
+  it ('treats a slice begin value larger than the list length to return an empty list', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.slice(47);
+
+    expect(results.data).toEqual({});
+    expect(results.length).toEqual(0);
+  });
+
+  it ('treats a negative slice begin value as an offset from the end', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.slice(-2);
+
+    expect(results.data).toEqual({ '0': 'e' , '1': 'f'});
+    expect(results.length).toEqual(2);
+  });
+
+  it ('treats a negative slice end value as an offset from the end', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.slice(2, -1);
+
+    expect(results.data).toEqual({ '0': 'c', '1': 'd', '2':'e'});
+    expect(results.length).toEqual(3);
+  });
+
   it ('can splice (remove a range of values) from within the data set', () => {
     let input = ['a', 'b', 'c', 'd', 'e', 'f'];
     let stuff = new List();

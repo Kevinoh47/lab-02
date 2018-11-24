@@ -48,6 +48,34 @@ class List {
     return myList;
   }
 
+  slice (begin = 0, end) {
+    
+    if (begin > this.length) {
+      return new List();
+    }
+
+    if (begin < 0) {
+      begin = this.length + begin;
+    }
+
+    if (end < 0) {
+      end = this.length + end;
+    }
+
+    if (!end || end > this.length) {
+      end = this.length;
+    }
+
+    let returnList = new List();
+
+    for (var i = 0; i <= this.length; i++) {
+      if (i >= begin && i < end ) {
+        returnList.push(this.data[i]);
+      }
+    }
+    return returnList;
+  }
+
   splice(start, deleteCount = 0, ...inserts) {
     
     if (start > this.length) {
