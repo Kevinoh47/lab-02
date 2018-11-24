@@ -46,7 +46,35 @@ class List {
     }
 
     return myList;
+  }
 
+  splice(index, deleteCount = 0, ...inserts) {
+    
+    let upperBound = index + deleteCount;
+
+    let myList = new List();
+
+    let myInserts = inserts.slice(0);
+
+    for (var i = 0; i < this.length; i++) {
+      // inside the area we are removing, add whatever needs to be added.
+      if (i >= index && i < upperBound) {
+        if (myInserts.length) {
+          inserts.forEach(e => {
+            myList.push(e);
+            myInserts.shift();
+          });
+        }
+      }
+      else if (i < index || i >= upperBound) {
+        myList.push(this.data[i]);
+      }
+      // if none are being deleted, tack the new ones to the end
+      // else {
+      //   insertArr.forEach(e => {myList.push(e);});
+      // }
+    }
+    return myList;
   }
 
 }

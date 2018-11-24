@@ -55,10 +55,47 @@ describe('List Data Structure', () => {
     stuff.push('a');
     stuff.push('b');
     expect(stuff.data).toEqual({ '0': 'a', '1': 'b'} );
-    //stuff.unshift('z');
 
-    //expect(stuff.data).toEqual({ '0': 'z', '1': 'a', '2': 'b'} );
+    let results = stuff.unshift('z');
 
+    expect(results.data).toEqual({ '0': 'z', '1': 'a', '2': 'b'} );
+
+  });
+
+  it ('can splice (remove a range of values) from within the data set', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.splice(1, 3);
+
+    expect(results.data).toEqual({ '0': 'a', '1':'e', '2': 'f'} );
+  });
+
+  it ('can splice (remove a range of values) from within the data set, and replace what was removed with a new value', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.splice(1, 3, 'z');
+
+    expect(results.data).toEqual({ '0': 'a', '1':'z', '2':'e', '3': 'f'} );
+  });
+
+  it ('can splice (remove a range of values) from within the data set, and replace what was removed with multiple new values', () => {
+    let input = ['a', 'b', 'c', 'd', 'e', 'f'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c', '3': 'd', '4':'e', '5': 'f'} );
+
+    let results = stuff.splice(1, 3, 'x','y','z');
+
+    expect(results.data).toEqual({ '0': 'a', '1':'x', '2':'y', '3':'z','4':'e', '5': 'f'} );
   });
 
 });
