@@ -48,32 +48,56 @@ class List {
     return myList;
   }
 
-  splice(index, deleteCount = 0, ...inserts) {
+  splice(start, deleteCount = 0, ...inserts) {
     
-    let upperBound = index + deleteCount;
+    if (start > this.length) {
+      start = this.length;
+    }
+
+    let upperBound = start + deleteCount;
 
     let myList = new List();
 
     let myInserts = inserts.slice(0);
 
-    for (var i = 0; i < this.length; i++) {
-      // inside the area we are removing, add whatever needs to be added.
-      if (i >= index && i < upperBound) {
-        if (myInserts.length) {
-          inserts.forEach(e => {
-            myList.push(e);
-            myInserts.shift();
-          });
+    // delete loop
+    if (deleteCount > 0 ) {
+      for (var i = 0; i < this.length; i++) {
+        // inside the area we are removing, or at the index if nothing is being deleted, add whatever needs to be added.
+        if (i >= start && i < upperBound) {
+
+          if (myInserts.length) {
+            inserts.forEach(e => {
+              myList.push(e);
+              myInserts.shift();
+            });
+          }
+        }
+        // otherwise, add the current values of the input array to the new array
+        else if (i < start || i >= upperBound) {
+          myList.push(this.data[i]);
         }
       }
-      else if (i < index || i >= upperBound) {
-        myList.push(this.data[i]);
-      }
-      // if none are being deleted, tack the new ones to the end
-      // else {
-      //   insertArr.forEach(e => {myList.push(e);});
-      // }
     }
+    // no deletes, only adds
+    else if (deleteCount <= 0) {
+      for (var j = 0; j < this.length; j++) {
+        if (j === start) {
+          if (myInserts.length) {
+            inserts.forEach(e => {
+              myList.push(e);
+              myInserts.shift();
+            });
+          }
+          myList.push(this.data[j]);
+        }
+        // otherwise, add the current values of the input array to the new array
+        else {
+          myList.push(this.data[j]);
+        }
+      }
+    }
+
     return myList;
   }
 

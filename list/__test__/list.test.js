@@ -98,4 +98,16 @@ describe('List Data Structure', () => {
     expect(results.data).toEqual({ '0': 'a', '1':'x', '2':'y', '3':'z','4':'e', '5': 'f'} );
   });
 
+  it ('can splice, not remove anything, and add multiple new values on at the indicated position', () => {
+    let input = ['a', 'b', 'c'];
+    let stuff = new List();
+    input.map(i => {stuff.push(i);});
+ 
+    expect(stuff.data).toEqual({ '0': 'a', '1': 'b', '2': 'c'} );
+
+    let results = stuff.splice(0, 0, 'x','y','z');
+
+    expect(results.data).toEqual({ '0': 'x', '1':'y', '2':'z', '3':'a','4':'b', '5': 'c'} );
+  });
+
 });
