@@ -8,6 +8,7 @@ stuff.push('b');
 stuff.push('c');
 
 let last = stuff.pop();
+console.log(last);
 
 stuff.unshift('z');
 console.log(stuff);

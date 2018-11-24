@@ -28,6 +28,27 @@ class List {
     return returnValue;
   }
 
+  shift() {
+    let returnValue = this.data[0];
+    delete this.data[0];
+    this.length--;
+    return returnValue;
+  }
+
+  unshift(item) {
+
+    let myList = new List();
+
+    myList.push(item);
+
+    for (var i = 0; i < this.length; i++) {
+      myList.push(this.data[i]);
+    }
+
+    return myList;
+
+  }
+
 }
 
 module.exports = List;

@@ -39,19 +39,51 @@ List.prototype.shift = function() {
  * Add item to the beginning of the list and increment list length property
  * @param item
  */
-List.prototype.unshift = function(item) {
-  let newList = {};
-  newList['0'] = item;
+// List.prototype.unshift = function(item) {
+//   let newList = {};
+//   newList['0'] = item;
   
-  for (var key in this.data) {
-    let newKey = parseInt(key) + 1;
-    if (isInt(newKey)) {
-      newList[newKey] = this.data[key];
-    }
-  }
-  this.length++;
-  this.data = newList;
-};
+//   for (var key in this.data) {
+//     if (isInt(parseInt(key))) {
+//       let newKey = parseInt(key) + 1;
+//       newList[newKey] = this.data[key];
+//     }
+//   }
+//   this.length++;
+//   this.data = newList;
+// };
+
+//array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+
+// List.prototype.splice = function(start, deleteCount, ...newItems) {
+
+//   if (start > this.length) {
+//     start = this.length;
+//   }
+
+//   // deletes
+//   for (var key in this.data) {
+//     // if deleteCount is omitted or if it is greater than length - start, all elements are deleted from start to end
+//     if(!deleteCount || (deleteCount > (this.length - start))) {
+//       if (key >= start) {
+//         Object.delete(this.data[key]);
+//       }
+//     } 
+//     // delete elements between start and start + delete count
+//     else {
+//       if (key >= start && key <= (key + deleteCount)) {
+//         Object.delete(this.data[key]);
+//       }
+//     }
+//   } 
+//   // inserts
+//   if (newItems) {
+
+//   }
+
+//   let newList = {};
+
+// }
 
 
 /**
@@ -63,4 +95,5 @@ function isInt(value) {
   return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value));
 }
 
-module.exports = List;
+
+
