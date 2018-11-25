@@ -1,5 +1,26 @@
 ![cf](https://i.imgur.com/7v5ASc8.png) 02: Tools and Context
 ============================================================
+## Travis
+[![Build Status](https://travis-ci.com/Kevinoh47/lab-02.svg?branch=working-lab02)](https://travis-ci.com/Kevinoh47/lab-02)
+
+https://travis-ci.com/Kevinoh47/lab-02
+
+## Notes
+The List class has two properties, data (an object), and the length property, where we track how many properties have been added to the data object.  
+
+There are a number of useful methods for the List class: push, pop, shift, unshift, slice, and splice.
+
+These methods work similarly to the same methods on an array: 
+Push takes an input and adds it to the List. 
+Pop removes and returns the last element on the list.
+Shift removes and returns the first element on the list.
+Unshift takes an input and adds it as the first element on the list.
+Slice returns a new list that is a specified subset of the list as a different list.
+Splice returns a new list that has either removed some elements from the original list, added new elements, or both.
+
+Splice was the hardest to implement, but it was fun to do because it used the spread operator to grab several input values and push them into an array.
+
+There are some other classes in this lab, used to demonstrate different construction patterns: Vehicles, Flying vehicles, Sea Creatures. We used constructors, classes, and factory patterns to build out instances of these classes.
 
 ### Before you begin
 * You'll need to initialize this lab folder as a new node module, install your dependencies, setup your npm script commands, and pull in your config files

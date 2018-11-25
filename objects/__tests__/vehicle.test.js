@@ -1,6 +1,8 @@
 'use strict';
 
-const Vehicle = require('../constructor.js');
+//const Vehicle = require('../vehicle-constructor.js');
+//const Vehicle = require('../vehicle-class.js');
+const Vehicle = require('../vehicle-factory.js');
 
 describe('Vehicles', () => {
 
@@ -42,7 +44,7 @@ describe('Vehicles', () => {
       expect(motorcycle.stop()).toBeTruthy();
     });
 
-    it('cannot do a wheelie', () => {
+    it('can do a wheelie', () => {
       expect(motorcycle.wheelie()).toBeTruthy();
     });
 
